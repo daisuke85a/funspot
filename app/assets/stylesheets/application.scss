@@ -1,3 +1,106 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.jumbotron {
+padding-top: 0px;
+// 背景画像を暗くする
+background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.05) ), url(child-3281615_1920.jpg);
+background-size: cover;
+// 背景画像の位置を決める
+background-position: 50% 50%;
+height: 420px;
+position: relative;
+}
+
+.jumbotron .container .row{
+    margin-top: 100px;
+    color: #fff;
+}
+
+.navbar-default {
+    background: transparent;
+    border-color: transparent;
+    z-index: 10;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: white;
+    font-size: 13px;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
+
+//navbar-deviseのcss
+.navbar-devise {
+    background: #fff;
+    border-color: #fff;
+    z-index: 10;
+}
+
+.navbar-devise .navbar-nav > li > a {
+    color: #222222;
+    font-size: 13px;
+}
+
+.navbar-devise .navbar-brand {
+    color: #222222;
+}
+
+// トップページのnavbarのドロップダウンがクリックされた時
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    background-color: transparent;
+    color: #555;
+}
+
+//facebookボタン
+.btn-facebook {
+    color: #fff;
+    background-color: #4c66a4;
+}
+
+// row-space類
+.row-space-top-0 {
+margin-top: 0px;
+}
+
+.row-space-top-1 {
+margin-top: 10px;
+}
+
+.row-space-top-2 {
+margin-top: 15px;
+}
+
+.row-space-top-3 {
+margin-top: 20px;
+}
+
+.row-space-top-4 {
+margin-top: 25px;
+}
+
+.row-space-0 {
+margin-bottom: 0px;
+}
+.row-space-1 {
+margin-bottom: 10px;
+}
+
+.row-space-2 {
+margin-bottom: 15px;
+}
+
+.row-space-3 {
+margin-bottom: 20px;
+}
+
+.row-space-4 {
+    margin-bottom: 25px;
+}
