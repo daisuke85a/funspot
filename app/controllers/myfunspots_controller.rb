@@ -2,6 +2,7 @@ class MyfunspotsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @funspots = current_user.myfunspots
   end
 
   def show
