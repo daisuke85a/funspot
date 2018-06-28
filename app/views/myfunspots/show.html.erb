@@ -3,35 +3,56 @@
 <!-- サマリー -->
 <div class="container-fluid container-listing-show">
     <div class="container">
-            <div class="row">
-                <div class="listing-title" style="font-size:24px;">
-                    <%= @funspot.name %></p>
-                </div>
-            <div class="col-md-6">
-                <div class="row row-space-top-4">
-                    <p> 管理者： <%= @funspot.user.name %></p>
-                </div>
-                <div class="row">
-                    <p> 住所： <%= @funspot.address %></p>
-                </div>
-                <div class="row">
-                    <p> 電話番号： <%= @funspot.phone_number %></p>
-                </div>
-                <div class="row">
-                    <p> メールアドレス：<%= @funspot.email %></p>
-                </div>
-                <div class="row">
-                    <p> ホームページ：<%= @funspot.website %></p>
-                </div>
-                <div class="row">
-                    <h3 class="row-space-3">このFunSpotについて</h3>
-                    <p><%= @funspot.content %></p>
-                </div>
-                <div class="row">
-                    <h3 class="row-space-3">アクセス</h3>
-                    <div id="map"></div>
-                </div>  
+        <div class="row">
+            <div class="listing-title" style="font-size:24px;">
+                <%= @funspot.name %></p>
             </div>
+        <div class="col-md-6">
+            <div class="row row-space-top-4">
+                <p> 管理者： <%= @funspot.user.name %></p>
+            </div>
+            <div class="row">
+                <p> 住所： <%= @funspot.address %></p>
+            </div>
+            <div class="row">
+                <p> 電話番号： <%= @funspot.phone_number %></p>
+            </div>
+            <div class="row">
+                <p> メールアドレス：<%= @funspot.email %></p>
+            </div>
+            <div class="row">
+                <p> ホームページ：<%= @funspot.website %></p>
+            </div>
+            <div class="row">
+                <h3 class="row-space-3">このFunSpotについて</h3>
+                <p><%= @funspot.content %></p>
+            </div>
+            <div class="row">
+                <h3 class="row-space-3">アクセス</h3>
+                <div id="map"></div>
+            </div>  
+
+                <!-- 近くのリスティング    -->
+            <div class="row">
+                <div class="col-md-9">
+                    <h3 class="row-space-3">近くのFunSpot</h3>
+                    
+                    <% for funspotfor in @funspot.nearbys(10) %>
+                        <div class="col-md-4">
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-8 col-xs-8">
+                                            <%= link_to funspotfor.name, funspotfor %><br>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+
+                </div>
+
         </div>
     </div>
 </div>
