@@ -21,6 +21,7 @@ class MyfunspotsController < ApplicationController
   end
 
   def edit
+    @myfunspot = Myfunspot.find(params[:id])
   end
 
   def update
