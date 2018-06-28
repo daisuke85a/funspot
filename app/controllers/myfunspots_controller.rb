@@ -27,6 +27,13 @@ class MyfunspotsController < ApplicationController
   end
 
   def update
+    @myfunspot = Myfunspot.find(params[:id])
+    if @myfunspot.update(myfunspot_params)
+      redirect_to :back
+    else
+      
+    end
+
   end
 
   private

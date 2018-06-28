@@ -5,4 +5,7 @@ class Myfunspot < ActiveRecord::Base
   validates :phone_number, presence: true
   validates :email, presence: true
 
+  geocoded_by :address
+  after_validation :geocode, :if => :address_changed?
+
 end
