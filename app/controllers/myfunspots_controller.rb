@@ -6,6 +6,7 @@ class MyfunspotsController < ApplicationController
   end
 
   def show
+    @funspot = Myfunspot.find(params[:id])
   end
 
   def new
