@@ -16,7 +16,29 @@
             </div>
         </div>
     </div>
+
+    <!-- Search Form -->
+    <div class="top-search-field">
+        <%= form_tag "", method: :get do %>
+            <div class="row">
+                <div class="container">
+                    <div class="col-md-7 col-xs-10" style="padding-right: 0px">
+                        <%= text_field_tag :serach, params[:search], placeholder: "希望の場所はどこですか？", class: "form-control" %>
+                    </div>
+
+                    <div class="col-md-2 hidden-xs hidden-sm">
+                        <%= text_field_tag :start, params[:start], placeholder: "チェックイン", class: "form-control" %>
+                    </div>
+                    <div class="col-md-2 hidden-xs hidden-sm">
+                        <%= text_field_tag :end, params[:end], placeholder: "チェックアウト", class: "form-control" %>
+                    </div>
+                    <div class="col-md-1 col-xs-2" style="padding-left: 0px; ">
+                        <%= submit_tag "検索", class: "btn btn-danger" %>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
 </div>
 
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+
