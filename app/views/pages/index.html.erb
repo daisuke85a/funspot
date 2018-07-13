@@ -108,20 +108,19 @@ function init() {
 
     var autocomplete = new google.maps.places.Autocomplete(input);
 
-    // Bind the map's bounds (viewport) property to the autocomplete object,
-    // so that the autocomplete requests use the current map bounds for the
-    // bounds option in the request.
-    autocomplete.bindTo('bounds', map);
 
     // Set the data fields to return when the user selects a place.
     autocomplete.setFields(
         ['address_components', 'geometry', 'icon', 'name']);
 
     autocomplete.addListener('place_changed', function() {
-        infowindow.close();
         var place = autocomplete.getPlace();
+        window.alert(place);
+        var lat = place.geometry.location.lat();
+        var lng = place.geometry.location.lng();
 
-
+        window.alert(lat);
+        window.alert(lng);
 
         if (!place.geometry) {
         // User entered the name of a Place that was not suggested and
