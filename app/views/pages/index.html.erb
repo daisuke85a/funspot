@@ -23,7 +23,7 @@
             <div class="row">
                 <div class="container">
                     <div class="col-md-7 col-xs-10" style="padding-right: 0px">
-                        <%= text_field_tag :serach, params[:search], placeholder: "希望の場所はどこですか？", class: "form-control" %>
+                        <%= text_field_tag :serach, params[:search], placeholder: "希望の場所はどこですか？", class: "form-control",id:"top-search-form" %>
                     </div>
 
                     <div class="col-md-2 hidden-xs hidden-sm">
@@ -95,3 +95,71 @@
 </div>
 
 <%= render 'partial/footer' %>
+
+<script>
+    // This example requires the Places library. Include the libraries=places
+    // parameter when you first load the API. For example:
+    // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+function init() {
+    var input = document.getElementById('top-search-form');
+    var types = document.getElementById('type-selector');
+    var strictBounds = document.getElementById('strict-bounds-selector');
+
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    // Bind the map's bounds (viewport) property to the autocomplete object,
+    // so that the autocomplete requests use the current map bounds for the
+    // bounds option in the request.
+    autocomplete.bindTo('bounds', map);
+
+    // Set the data fields to return when the user selects a place.
+    autocomplete.setFields(
+        ['address_components', 'geometry', 'icon', 'name']);
+
+    autocomplete.addListener('place_changed', function() {
+        infowindow.close();
+        var place = autocomplete.getPlace();
+
+
+
+        if (!place.geometry) {
+        // User entered the name of a Place that was not suggested and
+        // pressed the Enter key, or the Place Details request failed.
+        window.alert("No details available for input: '" + place.name + "'");
+        return;
+        }
+
+        var address = '';
+        if (place.address_components) {
+        address = [
+            (place.address_components[0] && place.address_components[0].short_name || ''),
+            (place.address_components[1] && place.address_components[1].short_name || ''),
+            (place.address_components[2] && place.address_components[2].short_name || '')
+        ].join(' ');
+        }
+    });
+
+    // Sets a listener on a radio button to change the filter type on Places
+    // Autocomplete.
+    function setupClickListener(id, types) {
+        var radioButton = document.getElementById(id);
+        radioButton.addEventListener('click', function() {
+        autocomplete.setTypes(types);
+        });
+    }
+
+    setupClickListener('changetype-all', []);
+    setupClickListener('changetype-address', ['address']);
+    setupClickListener('changetype-establishment', ['establishment']);
+    setupClickListener('changetype-geocode', ['geocode']);
+
+    document.getElementById('use-strict-bounds')
+        .addEventListener('click', function() {
+            console.log('Checkbox clicked! New state=' + this.checked);
+            autocomplete.setOptions({strictBounds: this.checked});
+        });
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7uMRd6myPnerdHP6mwi2p3M1vIXqw0Wo&libraries=places&callback=init"
+    async defer></script>
