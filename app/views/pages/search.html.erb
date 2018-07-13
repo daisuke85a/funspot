@@ -29,6 +29,22 @@
 
     var autocomplete = new google.maps.places.Autocomplete(input);
 
+    //マーカーとインフォウィンドウの配列を用意
+    markers = [];
+    infowindows = [];
+
+    <% @funspots.each do |funspot| %>
+        //markerはこの関数の中で同じ変数
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(<%= funspot.latitude %>, <%= funspot.longitude %>),
+            map: map
+        });
+
+        //マーカー配列にマーカを保存
+        markers.push(marker);
+        
+    <% end %>
+
     // Bind the map's bounds (viewport) property to the autocomplete object,
     // so that the autocomplete requests use the current map bounds for the
     // bounds option in the request.
