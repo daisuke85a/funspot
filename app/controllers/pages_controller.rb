@@ -4,6 +4,17 @@ class PagesController < ApplicationController
   end
 
   def search
+    if params[:search].present?
+      @latitude = params["lat"]
+      @longitude = params["lng"]
+
+      #検索結果が空欄の場合  
+    else
+      @funspots = Myfunspots.where(active: true).all
+      @latitude = @funspots.to_a[0].latitude
+      @longitude = @funspots.to_a[0].longitude
+    end
+
   end
   
 end

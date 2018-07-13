@@ -25,7 +25,7 @@
                     <%= hidden_field_tag :lat %>
                     <%= hidden_field_tag :lng %>
                     <div class="col-md-7 col-xs-10" style="padding-right: 0px">
-                        <%= text_field_tag :serach, params[:search], placeholder: "希望の場所はどこですか？", class: "form-control",id:"top-search-form" %>
+                        <%= text_field_tag :search, params[:search], placeholder: "希望の場所はどこですか？", class: "form-control",id:"top-search-form" %>
                     </div>
 
                     <div class="col-md-2 hidden-xs hidden-sm">
@@ -117,7 +117,6 @@ function init() {
 
     autocomplete.addListener('place_changed', function() {
         var place = autocomplete.getPlace();
-        window.alert(place);
         var lat = place.geometry.location.lat();
         var lng = place.geometry.location.lng();
 
