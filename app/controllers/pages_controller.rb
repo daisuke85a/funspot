@@ -17,7 +17,7 @@ class PagesController < ApplicationController
         @longitude = geolocation[1]
       end
 
-      @funspots = Myfunspot.near(geolocation, 1, order: 'distance')
+      @funspots = Myfunspot.near(geolocation, 100, order: 'distance')
 
       #検索結果が空欄の場合  
     else
