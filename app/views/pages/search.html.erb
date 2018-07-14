@@ -42,6 +42,20 @@
 
         //マーカー配列にマーカを保存
         markers.push(marker);
+
+        marker.addListener('click', function(){
+
+            var content = "<div>" + '<a href="/myfunspots/' + <%= funspot.id %> +'">' 
+                            + "<h5><%= funspot.name =%></h5></a></div>" 
+
+            var infowindow = new google.maps.InfoWindow({
+                content: content,
+                maxWidth: 280
+        });
+
+        infowindow.open(map, this);
+        infowindows.push(infowindow);
+    });
         
     <% end %>
 
