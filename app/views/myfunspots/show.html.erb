@@ -109,8 +109,16 @@ function initMap() {
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: uluru, map: map});
 
-  $('#reservation_start').pickadate();
-  $('#reservation_end').pickadate();
+  $('#reservation_start').pickadate({
+    format: 'yyyy/mm/dd',
+    formatSubmit: 'yyyy/mm/dd',
+    hiddenName: true
+  });
+  $('#reservation_end').pickadate({
+    format: 'yyyy/mm/dd',
+    formatSubmit: 'yyyy/mm/dd',
+    hiddenName: true
+    });
 }
 </script>
     <!--Load the API from the specified URL
