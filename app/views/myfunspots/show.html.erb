@@ -108,6 +108,9 @@ function initMap() {
       document.getElementById('map'), {zoom: 14, center: uluru});
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: uluru, map: map});
+
+  $('#reservation_start').pickadate();
+  $('#reservation_end').pickadate();
 }
 </script>
     <!--Load the API from the specified URL
@@ -116,3 +119,9 @@ function initMap() {
     * The callback parameter executes the initMap() function
     -->
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7uMRd6myPnerdHP6mwi2p3M1vIXqw0Wo&callback=initMap" async defer></script>
+
+<script>
+    $(function(){
+        $('.reservation_start').pickadate();
+    });
+<script>
