@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   def search
     if params[:search].present?
 
-      if params["let"].present? & params["lng"].present?
+      if params["lat"].present? & params["lng"].present?
         @latitude = params["lat"]
         @longitude = params["lng"]
         geolocation = [@latitude,@longitude]
