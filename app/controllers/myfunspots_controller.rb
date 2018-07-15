@@ -6,6 +6,10 @@ class MyfunspotsController < ApplicationController
   end
 
   def show
+    @start_date = params["start_date"]
+    @start_time = params["start_time"]
+    @end_date = params["end_date"]
+    @end_time = params["end_time"]
     @funspot = Myfunspot.find(params[:id])
   end
 

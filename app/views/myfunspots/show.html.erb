@@ -32,25 +32,23 @@
             <div class="row">
                 <div class="panel panel-default panel-show">                    
                     <div class="panel-body panel-real">         
-                        <%= form_for [@funspot, @funspot.reservations.new] do |f| %>       
-                                        
-                            <!-- これは、予約をするときに、一緒におくる、データです。-->
-                            <%= f.hidden_field :funspot_id, value: @funspot.id %>
+                        <%= form_tag( myfunspot_reservations_path(@funspot.id), method: :post) do %>       
 
                             <div class="row row-space-2">
                                 <div class="col-md-6">
-                                    <label>Check In</label>
-                                        <%= f.text_field :start, :class => 'form-control', placeholder: '開始' %>
+                                    <p>Check In</p>
+                                        <%= text_field_tag :start_date, params[@start_date], :class => 'form-control', placeholder: '開始日' %>
+                                        <%= text_field_tag :start_time, params[@start_time], :class => 'form-control', placeholder: '開始時間' %>
                                 </div>
-
                                 <div class="col-md-6">
-                                    <label>Check Out</label>
-                                    <%= f.text_field :end, :class => 'form-control', placeholder: '終了' %>
+                                    <p>Check Out</p>
+                                    <%= text_field_tag :end_date, params[@end_date], :class => 'form-control', placeholder: '終了日' %>
+                                    <%= text_field_tag :end_time, params[@end_time], :class => 'form-control', placeholder: '終了時間' %>
                                 </div>
                             </div>            
 
                             <div class="actions text-center">
-                                <%= f.submit "この日程で予約する", class: "btn btn-danger btn-wide" %>
+                                <%= submit_tag "この日程で予約する", class: "btn btn-danger btn-wide" %>
                             </div>
                         <% end %>
                     </div>
@@ -109,12 +107,12 @@ function initMap() {
   // The marker, positioned at Uluru
   var marker = new google.maps.Marker({position: uluru, map: map});
 
-  $('#reservation_start').pickadate({
+  $('#start_date').pickadate({
     format: 'yyyy/mm/dd',
     formatSubmit: 'yyyy/mm/dd',
     hiddenName: true
   });
-  $('#reservation_end').pickadate({
+  $('#end_date').pickadate({
     format: 'yyyy/mm/dd',
     formatSubmit: 'yyyy/mm/dd',
     hiddenName: true
