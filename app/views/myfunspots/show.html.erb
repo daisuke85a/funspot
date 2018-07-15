@@ -117,6 +117,16 @@ function initMap() {
     formatSubmit: 'yyyy/mm/dd',
     hiddenName: true
     });
+
+    $('#start_time').pickatime({
+          formatSubmit: 'HH:i',
+          hiddenName: true
+    });
+    
+    $('#end_time').pickatime({
+          formatSubmit: 'HH:i',
+          hiddenName: true
+    });
 }
 </script>
     <!--Load the API from the specified URL
