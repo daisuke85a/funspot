@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
         # @end_time = params["end_time"]
         @start = params["start_date"] + " " + params["start_time"]
         @end = params["end_date"] + " " + params["end_time"]
-        @reservation = Reservation.new(user_id: current_user.id, start: @start, end: @end)
+        @reservation = Reservation.new(user_id: current_user.id, myfunspot_id: params["myfunspot_id"], start: @start, end: @end)
         @reservation.save()
         redirect_to :back, notice:"予約が完了しました"
     end
