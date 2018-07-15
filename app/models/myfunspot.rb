@@ -1,6 +1,7 @@
 class Myfunspot < ActiveRecord::Base
   belongs_to :user
   has_many :reservations
+  has_many :regularreservations
 
   validates :name, presence: true
   validates :address, presence: true
