@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  myfunspot_id: 
+  start: 2018-07-15 05:57:15
+  end: 2018-07-15 05:57:15
+  dow: 1
+
+two:
+  user_id: 
+  myfunspot_id: 
+  start: 2018-07-15 05:57:15
+  end: 2018-07-15 05:57:15
+  dow: 1
