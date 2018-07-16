@@ -7,7 +7,7 @@ class RegularreservationsController < ApplicationController
 
     private
         def regularreservation_params
-            params.require(:regularreservation).permit(:start , :end , :dow)
+            params.require(:regularreservation).permit(:start , :end , :dow, :myfunspot_id)
         end
     
 end

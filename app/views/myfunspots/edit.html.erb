@@ -54,7 +54,7 @@
     <%= form_for [@myfunspot, @myfunspot.regularreservations.new] do |f| %>       
                     
         <!-- これは、予約をするときに、一緒におくる、データです。-->
-        <%= f.hidden_field :funspot_id, value: @myfunspot.id %>
+        <%= f.hidden_field :myfunspot_id, value: @myfunspot.id %>
 
         <div class="row row-space-2">
             <div class="col-md-4">
@@ -91,9 +91,9 @@
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-8 col-xs-8">
-                    <%= regular.start %>
-                    <%= regular.end %>
-                    <%= regular.dow %>
+                    <%= regular.start %><br/>
+                    <%= regular.end %><br/>
+                    <%= regular.dow %><br/>
                   </div>
                 </div>
               </div>
