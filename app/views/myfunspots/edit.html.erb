@@ -85,15 +85,20 @@
 <div class="container">
     <div class="col-md-9">
         <h3 class="row-space-3">定期予約の一覧表示</h3>            
+        <!-- TODO:定期予約が一つ余計に表示される問題を暫定対処している -->
         <% for regular in @myfunspot.regularreservations %>
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-body">
                 <div class="row">
                   <div class="col-md-8 col-xs-8">
-                    <%= regular.start %><br/>
-                    <%= regular.end %><br/>
-                    <%= regular.dow %><br/>
+                    <% if( !regular.nil? && !regular.start.nil? && !regular.end.nil? ) then %>
+                      <% p "********" %>
+                      <% p regular.start.strftime('%I:%M %p') %> 
+                      <%= regular.start.strftime('%I:%M %p') %><br/>
+                      <%= regular.end.strftime('%I:%M %p') %><br/>
+                      <%= regular.dow %><br/>
+                    <% end %>        
                   </div>
                 </div>
               </div>
