@@ -7,9 +7,14 @@ Rails.application.routes.draw do
 
 get '/search' => 'pages#search'
 
-  resources :myfunspots do
+resources :myfunspots do
     resources :reservations, only: [:create]
-  end
+end
+
+resources :myfunspots do
+  resources :regularreservations, only: [:create]
+end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
