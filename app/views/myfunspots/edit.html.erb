@@ -80,8 +80,21 @@
     <% end %>
   </div>
 </div>
+<!-- 定期予約の反映 -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <h2>定期予約の反映</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3 col-sm-3 col-middle row-space-1">
+      <%= link_to "定期予約を反映する", applyregular_path(@myfunspot), method: :post,  class: "btn btn-success pull-right" %>
+    </div>
+  </div>
+</div>
 
- <!-- 定期予約の一覧表示 -->
+<!-- 定期予約の一覧表示 -->
 <div class="container">
     <div class="col-md-9">
         <h3 class="row-space-3">定期予約の一覧表示</h3>            

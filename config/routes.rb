@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   
-  resources :myfunspots
-  devise_for :users, controllers: { registrations: 'registrations' }
-  root :to => 'pages#index'
-  resources :users, only: [:show]
+resources :myfunspots
+devise_for :users, controllers: { registrations: 'registrations' }
+root :to => 'pages#index'
+resources :users, only: [:show]
 
 get '/search' => 'pages#search'
+#post '/regularrcreate/:myfunspot_id(.:format)' => 'reservations#regularcreate'
+post '/applyregular/:id/',  to: 'reservations#applyregular', as: :applyregular
+
 
 resources :myfunspots do
     resources :reservations, only: [:create]
