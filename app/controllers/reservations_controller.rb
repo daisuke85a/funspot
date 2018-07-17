@@ -15,12 +15,38 @@ class ReservationsController < ApplicationController
 
     def applyregular
 
-        # head = Date.new()
-        # tail = Date.new(@end)
+        @funspot = Myfunspot.find(params[:id])
+        @start = Date.today #今日から TODO:データベース上はDateTimeにしているが、どうやらDataのほうが便利らしいのでDateに統一したい。
+        @end = Date.today >> 3 #3ヶ月後まで
 
-        p "****今日は何曜日？*****"
-        p  %w(日 月 火 水 木 金 土)[Date.today.wday] + '曜日'
-        p "****今日は何曜日？*****"
+        (@start..@end).each { |date| 
+            # すべての定期予約から、該当する曜日に相当する定期予約を取得する（Where文でとってきたい)曜日に値する
+            p %w(日 月 火 水 木 金 土)[date.wday] + '曜日'
+            @regulars = Regularreservation.where(myfunspot_id: params[:id], dow: date.wday)
+            p @regulars
+
+            # TODO: 曜日に該当する定期予約が見つかったら、開始時間と終了時間を取得して予約する。
+            # (@regulars).each { |regular 
+            
+            # }
+
+
+
+            #  @regular = Myfunspot.find(params[:id])
+            # for @myfunspot.regularreservations.each do |regular|
+            # regular
+            # end
+        }
+
+        # for (@start..@end).each do |date| 
+        #     p %w(日 月 火 水 木 金 土)[date.wday] + '曜日'
+        # end
+
+        # p "****今日は何曜日？*****"
+        # p  %w(日 月 火 水 木 金 土)[Date.today.wday] + '曜日'
+        # p "****今日は何曜日？*****"
+
+
 
         redirect_to :back, notice:"定期予約を反映しました"
 
