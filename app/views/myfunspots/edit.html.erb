@@ -96,21 +96,21 @@
 
 <!-- 定期予約の一覧表示 -->
 <div class="container">
-        <h3 class="row-space-3">定期予約の一覧表示</h3>            
-        <!-- TODO:定期予約が一つ余計に表示される問題を暫定対処している -->
-        <% (@myfunspot.regularreservations).each{ | regular |  %>
-          <div class="panel panel-default">
-            <div class="panel-body">
-              <div class="row">
-                <% if( !regular.nil? && !regular.start.nil? && !regular.end.nil? ) then %>
-                  <%= %w(日 月 火 水 木 金 土)[regular.dow] + '曜日' %><br/>
-                  <%= "開始: " + regular.start.strftime('%R') %><br/>
-                  <%= "終了: " + regular.end.strftime('%R') %><br/>
-                <% end %>        
-              </div>
-            </div>
-          </div>
-        <% } %>
+  <h3 class="row-space-3">定期予約の一覧表示</h3>            
+  <!-- TODO:定期予約が一つ余計に表示される問題を暫定対処している -->
+  <% (@myfunspot.regularreservations).each{ | regular |  %>
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="row">
+          <% if( !regular.nil? && !regular.start.nil? && !regular.end.nil? ) then %>
+            <%= %w(日 月 火 水 木 金 土)[regular.dow] + '曜日' %><br/>
+            <%= "開始: " + regular.start.strftime('%R') %><br/>
+            <%= "終了: " + regular.end.strftime('%R') %><br/>
+          <% end %>        
+        </div>
+      </div>
+    </div>
+  <% } %>
 </div>
 
 
