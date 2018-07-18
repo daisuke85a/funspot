@@ -15,6 +15,8 @@ class ReservationsController < ApplicationController
 
     def applyregular
 
+        p "*****applyregular*****"
+
         @funspot = Myfunspot.find(params[:id])
         @start = Date.today #今日から TODO:データベース上はDateTimeにしているが、どうやらDataのほうが便利らしいのでDateに統一したい。
         @end = Date.today >> 3 #3ヶ月後まで
@@ -25,13 +27,30 @@ class ReservationsController < ApplicationController
             @regulars = Regularreservation.where(myfunspot_id: params[:id], dow: date.wday)
             p @regulars
 
-            # TODO: 曜日に該当する定期予約が見つかったら、開始時間と終了時間を取得して予約する。
-            # (@regulars).each { |regular 
-            
-            # }
+            # 曜日に該当する定期予約が見つかったら、開始時間と終了時間を取得して予約する。
+            # TODO:２重登録を防ぐ対策が必要。 
+            (@regulars).each { |regular | 
+                if regular.dow == date.wday
+                    p "*****True if regular.dow == date.wday *****"
+                    @starttime = regular.start.strftime('%R')
+                    @startday = date.strftime('%F')
+                    @startdaytime = @startday +" "+ @starttime 
 
+                    @endtime = regular.end.strftime('%R')
+                    @endday = date.strftime('%F')
+                    @endtime = regular.end.strftime('%R')
+                    @endday = date.strftime('%F')
+                    @enddaytime = @endday +" "+ @endtime 
 
+                    p @startdaytime
+                    p @enddaytime
 
+                    @reservation = Reservation.new(start: @startdaytime, end:@enddaytime, user_id: @funspot.user_id ,myfunspot_id: params[:id])  
+                    @reservation.save              
+                else
+                    p "*****False if regular.dow == date.wday *****"
+                end
+            }
             #  @regular = Myfunspot.find(params[:id])
             # for @myfunspot.regularreservations.each do |regular|
             # regular
