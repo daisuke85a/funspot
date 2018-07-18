@@ -33,7 +33,7 @@
     markers = [];
     infowindows = [];
 
-    <% @funspots.each do |funspot| %>
+    <% @arrfunspots.each do |funspot| %>
         //markerはこの関数の中で同じ変数
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(<%= funspot.latitude %>, <%= funspot.longitude %>),
