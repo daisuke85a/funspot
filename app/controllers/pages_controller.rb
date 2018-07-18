@@ -29,17 +29,22 @@ class PagesController < ApplicationController
     #funspotデータを配列にしてまとめる
     @arrfunspots = @funspots.to_a
 
-    if( !params[:start].blank? &&!params[:end].blank? )
+    if( !params[:start_date].blank? && !params[:end_date].blank? )
 
-      start_date = Date.parse(params[:start])
-      end_date = Date.parse(params[:end])
+      start_date = DateTime.parse(params[:start_date] + " " + params[:start_time] )
+      end_date = DateTime.parse(params[:end_date] + " " + params[:end_time])
+
+      p "*************"
+      p start_date
+      p end_date
+      p "*************"
 
       @funspots.each do |funspot|
 
         #予約済みでないかをチェックする
         unavailable = funspot.reservations.where(
-          "(? <= start AND start <= ?)
-           OR (? <= end AND end <= ?)
+          "(? < start AND start < ?)
+           OR (? < end AND end < ?)
            OR (start < ? AND ? < end)",
            start_date, end_date,
            start_date, end_date,

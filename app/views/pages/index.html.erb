@@ -31,18 +31,23 @@
                 <div class="container">
                     <%= hidden_field_tag :lat %>
                     <%= hidden_field_tag :lng %>
-                    <div class="col-md-7 col-xs-10" style="padding-right: 0px">
+                    <div class="col-md-2" style="padding-right: 0px">
                         <%= text_field_tag :search, params[:search], placeholder: "希望の場所はどこですか？", class: "form-control",id:"top-search-form" %>
                     </div>
-
-                    <div class="col-md-2 hidden-xs hidden-sm">
-                        <%= text_field_tag :start, params[:start], placeholder: "チェックイン", class: "form-control" %>
+                    <div class="col-md-2">
+                        <%= text_field_tag :start_date, params[:start_date], placeholder: "開始日", class: "form-control" %>
                     </div>
-                    <div class="col-md-2 hidden-xs hidden-sm">
-                        <%= text_field_tag :end, params[:end], placeholder: "チェックアウト", class: "form-control" %>
+                    <div class="col-md-2">
+                        <%= text_field_tag :start_time, params[:start_time], placeholder: "開始時間", class: "form-control" %>
                     </div>
-                    <div class="col-md-1 col-xs-2" style="padding-left: 0px; ">
-                        <%= submit_tag "検索", class: "btn btn-danger" %>
+                    <div class="col-md-2">
+                        <%= text_field_tag :end_date, params[:end_date], placeholder: "終了日", class: "form-control" %>
+                    </div>
+                    <div class="col-md-2">
+                        <%= text_field_tag :end_time, params[:end_time], placeholder: "終了時間", class: "form-control" %>
+                    </div>
+                    <div class="col-md-2">
+                        <%= submit_tag "検索", class: "btn btn-primary" %>
                     </div>
                 </div>
             </div>
