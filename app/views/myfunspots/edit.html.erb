@@ -99,7 +99,7 @@
     <div class="col-md-9">
         <h3 class="row-space-3">定期予約の一覧表示</h3>            
         <!-- TODO:定期予約が一つ余計に表示される問題を暫定対処している -->
-        <% for regular in @myfunspot.regularreservations %>
+        <% (@myfunspot.regularreservations).each{ | regular |  %>
           <div class="col-md-9">
             <div class="panel panel-default">
               <div class="panel-body">
@@ -115,7 +115,7 @@
               </div>
             </div>
           </div>
-        <% end %>
+        <% } %>
     </div>
 </div>
 
