@@ -106,11 +106,9 @@
                 <div class="row">
                   <div class="col-md-8 col-xs-8">
                     <% if( !regular.nil? && !regular.start.nil? && !regular.end.nil? ) then %>
-                      <% p "********" %>
-                      <% p regular.start.strftime('%I:%M %p') %> 
-                      <%= regular.start.strftime('%I:%M %p') %><br/>
-                      <%= regular.end.strftime('%I:%M %p') %><br/>
-                      <%= regular.dow %><br/>
+                      <%= %w(日 月 火 水 木 金 土)[regular.dow] + '曜日' %><br/>
+                      <%= "開始: " + regular.start.strftime('%R') %><br/>
+                      <%= "終了: " + regular.end.strftime('%R') %><br/>
                     <% end %>        
                   </div>
                 </div>
