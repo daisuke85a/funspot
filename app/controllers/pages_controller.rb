@@ -45,7 +45,7 @@ class PagesController < ApplicationController
         unavailable = funspot.reservations.where(
           "(? < start AND start < ?)
            OR (? < end AND end < ?)
-           OR (start < ? AND ? < end)",
+           OR (start <= ? AND ? <= end)",
            start_date, end_date,
            start_date, end_date,
            start_date, end_date,

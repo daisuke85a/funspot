@@ -116,6 +116,27 @@
     // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
 function init() {
+        $('#start_date').pickadate({
+            format: 'yyyy/mm/dd',
+            formatSubmit: 'yyyy/mm/dd',
+            hiddenName: true
+        });
+        $('#end_date').pickadate({
+            format: 'yyyy/mm/dd',
+            formatSubmit: 'yyyy/mm/dd',
+            hiddenName: true
+        });
+
+        $('#start_time').pickatime({
+            formatSubmit: 'HH:i',
+            hiddenName: true
+        });
+        
+        $('#end_time').pickatime({
+            formatSubmit: 'HH:i',
+            hiddenName: true
+        });
+
     var input = document.getElementById('top-search-form');
     var types = document.getElementById('type-selector');
     var strictBounds = document.getElementById('strict-bounds-selector');
