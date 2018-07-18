@@ -61,27 +61,21 @@
                 <div id="map"></div>
             </div>  
 
-                <!-- 近くのFunspotを表示    -->
+            <!-- 近くのFunspotを表示    -->
             <div class="row">
-                <div class="col-md-9">
-                    <h3 class="row-space-3">近くのFunSpot</h3>
-                    
-                    <% for funspotfor in @funspot.nearbys(10) %>
-                        <div class="col-md-4">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-8 col-xs-8">
-                                            <%= link_to funspotfor.name, funspotfor %><br>
-                                        </div>
-                                    </div>
+                <h3>近くのFunSpot</h3>                    
+                <% for funspotfor in @funspot.nearbys(10) %>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8 col-xs-8">
+                                    <%= link_to funspotfor.name, funspotfor %><br>
                                 </div>
                             </div>
                         </div>
-                    <% end %>
-
-                </div>
-
+                    </div>
+                <% end %>
+            </div>
         </div>
     </div>
 </div>
