@@ -75,7 +75,7 @@
         </div>            
 
         <div class="actions text-center">
-            <%= f.submit "この日程を定期予約に登録する", class: "btn btn-danger btn-wide" %>
+            <%= f.submit "この日程を定期予約に登録する", class: "btn btn-primary" %>
         </div>
     <% end %>
   </div>
@@ -88,35 +88,29 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-3 col-sm-3 col-middle row-space-1">
-      <%= link_to "定期予約を反映する", applyregular_path(@myfunspot), method: :post,  class: "btn btn-success pull-right" %>
+    <div class="col-md-6 col-md-offset-3 text-center">
+      <%= link_to "定期予約を反映する", applyregular_path(@myfunspot), method: :post,  class: "btn btn-primary" %>
     </div>
   </div>
 </div>
 
 <!-- 定期予約の一覧表示 -->
 <div class="container">
-    <div class="col-md-9">
         <h3 class="row-space-3">定期予約の一覧表示</h3>            
         <!-- TODO:定期予約が一つ余計に表示される問題を暫定対処している -->
         <% (@myfunspot.regularreservations).each{ | regular |  %>
-          <div class="col-md-9">
-            <div class="panel panel-default">
-              <div class="panel-body">
-                <div class="row">
-                  <div class="col-md-8 col-xs-8">
-                    <% if( !regular.nil? && !regular.start.nil? && !regular.end.nil? ) then %>
-                      <%= %w(日 月 火 水 木 金 土)[regular.dow] + '曜日' %><br/>
-                      <%= "開始: " + regular.start.strftime('%R') %><br/>
-                      <%= "終了: " + regular.end.strftime('%R') %><br/>
-                    <% end %>        
-                  </div>
-                </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="row">
+                <% if( !regular.nil? && !regular.start.nil? && !regular.end.nil? ) then %>
+                  <%= %w(日 月 火 水 木 金 土)[regular.dow] + '曜日' %><br/>
+                  <%= "開始: " + regular.start.strftime('%R') %><br/>
+                  <%= "終了: " + regular.end.strftime('%R') %><br/>
+                <% end %>        
               </div>
             </div>
           </div>
         <% } %>
-    </div>
 </div>
 
 
