@@ -93,10 +93,32 @@ class PagesController < ApplicationController
           p reservedFlg
 
         end
+
+        temp_date = start_date
+        blank = 0
+        available = 0
+
+        while (temp_date < end_date)
+          p "****1時間の空きがあるかチェック***"
+          p temp_date
+          if(reservedFlg [toResFlgFromDateTime(temp_date)] == nil)
+            blank = blank + 1
+          else
+            blank = 0
+          end
+
+          if blank == 4
+            p "if blank == 4"
+            available = 1
+          end 
+          # 15分後 (1/1440日後)
+          temp_date = temp_date + Rational(1, 24 * 60 / 15)
+        end
+
         # delete unavalable funspot from @funspots
-        # if unavailable.length > 0
-        #   @arrfunspots.delete(funspot)
-        # end
+        if available != 1
+          @arrfunspots.delete(funspot)
+        end
       end
     end
 
