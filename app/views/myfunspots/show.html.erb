@@ -9,7 +9,10 @@
         </div>
     </div>
     <div class="row">
-        <div id="calendar"></div>
+        <div class='calendar'></div>
+    </div>
+    <div class="row">
+        <div id='remote_container'></div>
     </div>
 </div>
 
@@ -120,8 +123,6 @@
 <script>
 // Initialize and add the map
 function initMap() {
-    
-  $('#calendar').fullCalendar({});
 
 // The location of Uluru
   var uluru = {lat: <%= @funspot.latitude %>, lng:<%= @funspot.longitude %>};
