@@ -1,11 +1,24 @@
 <%= render 'partial/navbar' %>
 
+<!-- 予約状況表示 -->
+<!-- TODO:週のタイムライン表示したい。週のリスト表示したい。予約状況表示したい。 -->
+<div class="container">
+    <div class="row">
+        <div class="listing-title" style="font-size:24px;">
+            <%= @funspot.name %></p>
+        </div>
+    </div>
+    <div class="row">
+        <div id="calendar"></div>
+    </div>
+</div>
+
 <!-- サマリー -->
 <div class="container-fluid container-listing-show">
     <div class="container">
         <div class="row">
             <div class="listing-title" style="font-size:24px;">
-                <%= @funspot.name %></p>
+                <p> 詳細</p>
             </div>
         <div class="col-md-6">
             <div class="row row-space-top-4">
@@ -107,7 +120,10 @@
 <script>
 // Initialize and add the map
 function initMap() {
-  // The location of Uluru
+    
+  $('#calendar').fullCalendar({});
+
+// The location of Uluru
   var uluru = {lat: <%= @funspot.latitude %>, lng:<%= @funspot.longitude %>};
   // The map, centered at Uluru
   var map = new google.maps.Map(

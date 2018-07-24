@@ -2,6 +2,18 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "/Users/daisuke/Documents/work/schedularModuleSelect/schedule-template-master"
+		},
+		{
+			"path": "/Users/daisuke/Documents/work/schedularModuleSelect/jQuerySkeulerPlugin"
+		},
+		{
+			"path": "/Users/daisuke/Documents/work/schedularModuleSelect/misson"
+		},
+		{
+			"path": "/Users/daisuke/Documents/work/schedularModuleSelect/dhtmltest1/dhtmltest1"
 		}
 	]
 }

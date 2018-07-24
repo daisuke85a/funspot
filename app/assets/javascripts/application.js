@@ -19,3 +19,5 @@
 //= require pickadate/picker.date
 //= require pickadate/picker.time
 //= require pickadate/translations/ja_JP
+//= require moment 
+//= require fullcalendar
