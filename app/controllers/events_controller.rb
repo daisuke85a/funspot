@@ -17,6 +17,7 @@ class EventsController < ApplicationController
   
     def create
       @event = Event.new(event_params)
+      debugger
       @event.save
     end
   
