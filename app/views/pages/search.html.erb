@@ -1,4 +1,20 @@
 <%= render 'partial/navbar' %>
+
+<div class="row">
+    <% @funspots.each do |funspot| %>
+        <li class="panel-body">
+            <div class="row-table">
+                <div class="col-sm-7 col-lg-7 col-middle row-space-2">
+                    <span class="listing-title"><%= funspot.name %></span>
+                </div>
+                <div class="col-md-3 col-sm-3 col-middle row-space-1">
+                        <%= link_to "表示する", myfunspot_path(funspot), class: "btn btn-success pull-right" %>
+                </div>
+            </div>
+        </li>
+    <% end %>               
+</div>
+
 <div class="col-md-6">
     <div class="">
     <%= text_field_tag :search, params[:search], placeholder: "Where are you going?", class: "form-control",id: "pac-input" %>
