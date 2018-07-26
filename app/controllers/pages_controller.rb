@@ -29,8 +29,8 @@ class PagesController < ApplicationController
       #検索結果が空欄の場合  
     else
       @funspots = Myfunspot.all
-      @latitude = @funspots.to_a[0].latitude
-      @longitude = @funspots.to_a[0].longitude
+      #@latitude = @funspots.to_a[0].latitude TODO:heroku上でNoMethodError (undefined method `latitude' for nil:NilClass):と表示されるから仮にコメントアウト
+      #@longitude = @funspots.to_a[0].longitude TODO::同上
     end
 
     #funspotデータを配列にしてまとめる
