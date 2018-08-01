@@ -1,0 +1,168 @@
+<%= render 'partial/navbar' %>
+
+<!-- 予約状況表示 -->
+<!-- TODO:週のタイムライン表示したい。週のリスト表示したい。予約状況表示したい。 -->
+<div class="container">
+    <div class="row">
+        <div class="listing-title" style="font-size:24px;">
+            <%= @funspot.name %></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class='calendar'></div>
+    </div>
+    <div class="row">
+        <div id='remote_container'></div>
+    </div>
+</div>
+
+<!-- サマリー -->
+<div class="container-fluid container-listing-show">
+    <div class="container">
+        <div class="row">
+            <div class="listing-title" style="font-size:24px;">
+                <p> 詳細</p>
+            </div>
+        <div class="col-md-6">
+            <div class="row row-space-top-4">
+                <p> 管理者： <%= @funspot.user.name %></p>
+            </div>
+            <div class="row">
+                <p> 住所： <%= @funspot.address %></p>
+            </div>
+            <div class="row">
+                <p> 電話番号： <%= @funspot.phone_number %></p>
+            </div>
+            <div class="row">
+                <p> メールアドレス：<%= @funspot.email %></p>
+            </div>
+            <div class="row">
+                <p> ホームページ：<%= @funspot.website %></p>
+            </div>
+            <div class="row">
+                <h3 class="row-space-3">このFunSpotについて</h3>
+                <p><%= @funspot.content %></p>
+            </div>
+
+            <!-- 予約フォーム -->
+            <div class="row">
+                <h3 class="row-space-3">スタジオレンタルの予約</h3>
+                <div class="panel panel-default panel-show">                    
+                    <div class="panel-body panel-real">         
+                        <%= form_tag( myfunspot_reservations_path(@funspot.id), method: :post) do %>
+                            <div class="row row-space-2">
+                                <div class="col-md-6">
+                                    <p>Check In</p>
+                                        <%= text_field_tag :start_date, params[@start_date], :class => 'form-control', placeholder: '開始日' %>
+                                        <%= text_field_tag :start_time, params[@start_time], :class => 'form-control', placeholder: '開始時間' %>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>Check Out</p>
+                                    <%= text_field_tag :end_date, params[@end_date], :class => 'form-control', placeholder: '終了日' %>
+                                    <%= text_field_tag :end_time, params[@end_time], :class => 'form-control', placeholder: '終了時間' %>
+                                </div>
+                            </div>            
+
+                            <div class="actions text-center">
+                                <%= submit_tag "この日程で予約する", class: "btn btn-danger btn-wide" %>
+                            </div>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <h3 class="row-space-3">アクセス</h3>
+                <div id="map"></div>
+            </div>  
+
+            <!-- 近くのFunspotを表示    -->
+            <div class="row">
+                <h3>近くのFunSpot</h3>                    
+                <% for funspotfor in @funspot.nearbys(10) %>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-8 col-xs-8">
+                                    <%= link_to funspotfor.name, funspotfor %><br>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% end %>
+            </div>  
+            <!-- 予約の一覧表示 -->
+            <h3 class="row-space-3">予約の一覧表示</h3>            
+            <!-- TODO:定期予約が一つ余計に表示される問題を暫定対処している -->
+            <% (@funspot.reservations).each{ | reservation |  %>
+                <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                    <% if( !reservation.nil? && !reservation.start.nil? && !reservation.end.nil? ) then %>
+                        <%= "開始: " + reservation.start.strftime('%F') + " " + reservation.start.strftime('%R') %><br/>
+                        <%= "終了: " + reservation.end.strftime('%F') + " " + reservation.end.strftime('%R') %><br/>
+                    <% end %>        
+                    </div>
+                </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    /* Set the size of the div element that contains the map */
+    #map {
+    height: 350px;  /* The height is 400 pixels */
+    width: 100%;  /* The width is the width of the web page */
+    }
+</style>
+
+
+<script>
+// Initialize and add the map
+function initMap() {
+
+// The location of Uluru
+  var uluru = {lat: <%= @funspot.latitude %>, lng:<%= @funspot.longitude %>};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 14, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+
+  $('#start_date').pickadate({
+    format: 'yyyy/mm/dd',
+    formatSubmit: 'yyyy/mm/dd',
+    hiddenName: true
+  });
+  $('#end_date').pickadate({
+    format: 'yyyy/mm/dd',
+    formatSubmit: 'yyyy/mm/dd',
+    hiddenName: true
+    });
+
+    $('#start_time').pickatime({
+          formatSubmit: 'HH:i',
+          hiddenName: true
+    });
+    
+    $('#end_time').pickatime({
+          formatSubmit: 'HH:i',
+          hiddenName: true
+    });
+}
+</script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function
+    -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC7uMRd6myPnerdHP6mwi2p3M1vIXqw0Wo&callback=initMap" async defer></script>
+
+<script>
+    $(function(){
+        $('.reservation_start').pickadate();
+    });
+<script>
