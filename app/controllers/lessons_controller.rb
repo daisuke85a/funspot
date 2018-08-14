@@ -16,7 +16,7 @@ class LessonsController < ApplicationController
     def create
       @lesson = current_user.lessons.build(lesson_params)
       if @lesson.save
-        redirect_to :back
+        redirect_to :back, notice: "レッスンを作成しました"
         # redirect_to edit_lesson_path(@lesson), notice: "レッスンを作成しました"
       else
         redirect_to new_lesson_path(@lesson), notice: "レッスンを作成できませんでした"
