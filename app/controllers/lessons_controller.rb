@@ -2,7 +2,7 @@ class LessonsController < ApplicationController
     before_action :authenticate_user!
   
     def index
-      @lessons = current_user.lessons
+      @lessons = Lesson.all
     end
   
     def show

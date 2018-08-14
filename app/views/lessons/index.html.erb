@@ -1,0 +1,16 @@
+<%= render 'partial/navbar' %>
+
+<div class="row">
+    <% @lessons.each do |lesson| %>
+        <li class="panel-body">
+            <div class="row-table">
+                <div class="col-sm-7 col-lg-7 col-middle row-space-2">
+                    <span class="listing-title"><%= lesson.title %></span>
+                </div>
+                <div class="col-md-3 col-sm-3 col-middle row-space-1">
+                        <%= link_to "詳細を表示する", lesson_path(lesson), class: "btn btn-primary pull-right" %>
+                </div>
+            </div>
+        </li>
+    <% end %>               
+</div>
