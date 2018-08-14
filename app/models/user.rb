@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   has_many :myfunspots
   has_many :reservations
   has_many :regularreservations
+  has_many :lessons
 
 end

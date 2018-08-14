@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :events
+resources :events
 resources :myfunspots
+resources :lessons
 devise_for :users, controllers: { registrations: 'registrations' }
 root :to => 'pages#index'
 resources :users, only: [:show]
