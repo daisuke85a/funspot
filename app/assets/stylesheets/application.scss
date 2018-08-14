@@ -308,3 +308,24 @@ body{
     color:#222;
     background-color: #F8F8F8;
 }
+
+.circle {	
+    position: relative;
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: skyblue;
+  }
+  
+  .circle span {
+    position: absolute;
+    display: inline-block;
+    left: 0;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width :80px;
+    text-align:center;
+  }
