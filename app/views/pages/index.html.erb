@@ -6,22 +6,21 @@
 </script>
 
 <div class="jumbotron">
-    <%= render 'partial/navbar' %>
+   <%= render 'partial/navbar' %>
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center">
-                <h2 class="display-3">ダンス 未経験者 大歓迎！<BR/>ダンスでストレス発散しよう！</h2>
+                <h1 class="display-4">ダンス未経験者大歓迎！<BR/>ダンスでストレス発散しよう！</h1>
             </div>
         </div>
 
         <div class="row">
             <div class="col-md-6 col-md-offset-3 text-center">
-                <%= link_to "ダンスレッスンを探す", lessons_path, class: 'btn btn-primary' %>
-                <%= link_to "ダンスレッスンを開催する", new_lesson_path, class: 'btn btn-primary' %>
+                <p><%= link_to "ダンスレッスンを探す", lessons_path, class: 'btn btn-primary display-4' %></p>
+                <p><%= link_to "ダンスレッスンを開催する", new_lesson_path, class: 'btn btn-primary display-4' %></p>
             </div>
         </div>
     </div>
 </div>
-
 
 <%= render 'partial/footer' %>
