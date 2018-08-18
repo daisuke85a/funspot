@@ -29,16 +29,41 @@
     border-radius: 0.5em;
 }
 
+.jumbotron .btn-primary{
+    background-color: #FFB100;
+    border: 0em;
+}
+
+.mynabvar {
+    background-color: rgba(255,177,0,0.6);
+    background: rgba(255,177,0,0.6);
+}
+.align-middle{
+    vertical-align:middle;
+}
+.mynabvar .btn{
+    font-size: 42px;
+    border-radius: 40px;
+}
+
+.mynabvar .btn-primary{
+    background-color: rgba(241,245,130,0.9);
+    background: rgba(241,245,130,0.9);
+    border: 0em;
+}
+
 .logo {
     color: #fff;
     font-size: 5em;
     line-height: 1.6;
+    opacity:1.0;
 }
 
 .navbar-default {
     background: transparent;
     border-color: transparent;
     z-index: 10;
+    height: 100px;
 }
 
 .navbar-default .navbar-nav > li > a {
